@@ -1,3 +1,10 @@
+  -- Set up lspconfig.
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+local util = require "lspconfig/util"
+
+
+
 -- https://github.com/neovim/nvim-lspconfig#Suggested-configuration
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -30,12 +37,13 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+  vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
 local lsp_flags = {
   debounce_text_changes = 120,
 }
+
 require('lspconfig')['eslint'].setup{
  settings = {
   codeAction = {
@@ -71,17 +79,46 @@ require('lspconfig')['eslint'].setup{
   }
 }
 }
+
 require('lspconfig')['tsserver'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
+    capabilities = capabilities
 }
+
+-- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#neovim-config
 require('lspconfig')['gopls'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
+    capabilities = capabilities,
+    cmd = {"gopls", "serve"},
+    filetypes = {"go", "gomod"},
+    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+     settings = {
+      gopls = {
+        analyses = {
+          unusedparams = true,
+        },
+        staticcheck = true,
+      },
+    },
 }
+
 require('lspconfig')['sumneko_lua'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+
     settings = {
     Lua = {
+      format = {
+    enable = true,
+    -- Put format options here
+    -- NOTE: the value should be STRING!!
+    defaultConfig = {
+      indent_style = "space",
+      indent_size = "2",
+    }
+  },
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
         version = 'LuaJIT',
@@ -100,4 +137,5 @@ require('lspconfig')['sumneko_lua'].setup{
       },
     },
   },
+  capabilities = capabilities
 }
