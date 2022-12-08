@@ -25,14 +25,16 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'mhartington/formatter.nvim'
+Plug 'jremmen/vim-ripgrep'
+Plug 'tpope/vim-fugitive'
+"Plug 'mhartington/formatter.nvim'
 
 call plug#end()
 
 lua require('complete')
 lua require('lsp')
 lua require('ntree')
-lua require('fm')
+"lua require('fm')
 lua require("treesitter")
 
 colorscheme gruvbox

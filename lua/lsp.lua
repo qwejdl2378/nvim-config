@@ -1,4 +1,4 @@
-  -- Set up lspconfig.
+-- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local util = require "lspconfig/util"
@@ -8,7 +8,7 @@ local util = require "lspconfig/util"
 -- https://github.com/neovim/nvim-lspconfig#Suggested-configuration
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
@@ -22,7 +22,7 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -44,88 +44,88 @@ local lsp_flags = {
   debounce_text_changes = 120,
 }
 
-require('lspconfig')['eslint'].setup{
- settings = {
-  codeAction = {
-    disableRuleComment = {
-      enable = true,
-      location = "separateLine"
+require('lspconfig')['eslint'].setup {
+  settings = {
+    codeAction = {
+      disableRuleComment = {
+        enable = true,
+        location = "separateLine"
+      },
+      showDocumentation = {
+        enable = true
+      }
     },
-    showDocumentation = {
-      enable = true
+    codeActionOnSave = {
+      enable = false,
+      mode = "all"
+    },
+    experimental = {
+      useFlatConfig = false
+    },
+    format = true,
+    nodePath = "",
+    onIgnoredFiles = "off",
+    packageManager = "yarn",
+    problems = {
+      shortenToSingleLine = false
+    },
+    quiet = false,
+    rulesCustomizations = {},
+    run = "onType",
+    useESLintClass = false,
+    validate = "on",
+    workingDirectory = {
+      mode = "location"
     }
-  },
-  codeActionOnSave = {
-    enable = false,
-    mode = "all"
-  },
-  experimental = {
-    useFlatConfig = false
-  },
-  format = true,
-  nodePath = "",
-  onIgnoredFiles = "off",
-  packageManager = "yarn",
-  problems = {
-    shortenToSingleLine = false
-  },
-  quiet = false,
-  rulesCustomizations = {},
-  run = "onType",
-  useESLintClass = false,
-  validate = "on",
-  workingDirectory = {
-    mode = "location"
   }
 }
-}
 
-require('lspconfig')['tsserver'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities
+require('lspconfig')['tsserver'].setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities
 }
 
 -- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#neovim-config
-require('lspconfig')['gopls'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-    cmd = {"gopls", "serve"},
-    filetypes = {"go", "gomod"},
-    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-     settings = {
-      gopls = {
-        analyses = {
-          unusedparams = true,
-        },
-        staticcheck = true,
+require('lspconfig')['gopls'].setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+  cmd = { "gopls", "serve" },
+  filetypes = { "go", "gomod" },
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
       },
+      staticcheck = true,
     },
+  },
 }
 
-require('lspconfig')['sumneko_lua'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
+require('lspconfig')['sumneko_lua'].setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
 
-    settings = {
+  settings = {
     Lua = {
       format = {
-    enable = true,
-    -- Put format options here
-    -- NOTE: the value should be STRING!!
-    defaultConfig = {
-      indent_style = "space",
-      indent_size = "2",
-    }
-  },
+        enable = true,
+        -- Put format options here
+        -- NOTE: the value should be STRING!!
+        defaultConfig = {
+          indent_style = "space",
+          indent_size = "2",
+        }
+      },
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
         version = 'LuaJIT',
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
+        globals = { 'vim' },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
