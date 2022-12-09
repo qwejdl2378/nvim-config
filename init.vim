@@ -2,9 +2,9 @@ call plug#begin('~/.vim/plugged')
 " Plug 'scrooloose/nerdtree'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 " Plug 'preservim/nerdcommenter'
-" Plug 'elubow/cql-vim'
 " Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 " Plug 'mhartington/formatter.nvim'
+Plug 'elubow/cql-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
@@ -70,6 +70,7 @@ let mapleader=","
 let g:mkdp_auto_start = 0
 
 set completeopt=menu,menuone,noselect " 用于nvim-cmp
+
 " fzf颜色
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -91,8 +92,10 @@ nmap <C-J> <C-W>j
 nmap <C-K> <C-W>k
 nmap <C-L> <C-W>l
 nmap <C-H> <C-W>h
-nmap mm <Plug>(git-messenger)
 nmap <C-z> :NvimTreeToggle<CR>
+
+
+nmap mm <Plug>(git-messenger)
 
 "auto import go package
 lua <<EOF
