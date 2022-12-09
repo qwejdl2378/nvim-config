@@ -1,20 +1,21 @@
 call plug#begin('~/.vim/plugged')
-"Plug 'scrooloose/nerdtree'
-"Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'scrooloose/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'preservim/nerdcommenter'
+" Plug 'elubow/cql-vim'
+" Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
+" Plug 'mhartington/formatter.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
 Plug 'andymass/vim-matchup'
 Plug 'rhysd/git-messenger.vim'
 Plug 'neovim/nvim-lspconfig'
-" Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 Plug 'terryma/vim-multiple-cursors'
-"Plug 'elubow/cql-vim'
 Plug 'chr4/nginx.vim'
-" Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-tree/nvim-web-devicons' " optional, for file icons
@@ -27,14 +28,12 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'jremmen/vim-ripgrep'
 Plug 'tpope/vim-fugitive'
-"Plug 'mhartington/formatter.nvim'
 
 call plug#end()
 
 lua require('complete')
 lua require('lsp')
 lua require('ntree')
-"lua require('fm')
 lua require("treesitter")
 
 colorscheme gruvbox
@@ -93,7 +92,9 @@ nmap <C-K> <C-W>k
 nmap <C-L> <C-W>l
 nmap <C-H> <C-W>h
 nmap mm <Plug>(git-messenger)
+nmap <C-z> :NvimTreeToggle<CR>
 
+"auto import go package
 lua <<EOF
   -- 
   function go_org_imports(wait_ms)
