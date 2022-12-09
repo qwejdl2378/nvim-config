@@ -112,6 +112,6 @@ lua <<EOF
 EOF
 
 autocmd BufWritePre *.go lua go_org_imports()
-"autocmd BufRead,BufWritePre *.sh normal gg=G
 
-
+command YamlToJson %!yq -o j
+command JsonFormat %!jq 
