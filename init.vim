@@ -20,21 +20,30 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-tree/nvim-web-devicons' " optional, for file icons
 Plug 'nvim-tree/nvim-tree.lua'
+" 补全
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+
+
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'jremmen/vim-ripgrep'
 Plug 'tpope/vim-fugitive'
 
+" lsp管理
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 call plug#end()
 
-lua require('complete')
+lua require('mason-conf')
 lua require('lsp')
 lua require('ntree')
 lua require("treesitter")
+lua require('complete')
 
 colorscheme gruvbox
 
@@ -69,7 +78,6 @@ set foldlevel=99
 let mapleader=","
 let g:mkdp_auto_start = 0
 
-set completeopt=menu,menuone,noselect " 用于nvim-cmp
 
 " fzf颜色
 let g:fzf_colors =
@@ -93,13 +101,9 @@ nmap <C-K> <C-W>k
 nmap <C-L> <C-W>l
 nmap <C-H> <C-W>h
 nmap <C-z> :NvimTreeToggle<CR>
-
-
 nmap mm <Plug>(git-messenger)
 
-"auto import go package
 lua <<EOF
-  -- 
   function go_org_imports(wait_ms)
     local params = vim.lsp.util.make_range_params()
     params.context = {only = {"source.organizeImports"}}
@@ -116,6 +120,6 @@ lua <<EOF
 EOF
 
 autocmd BufWritePre *.go lua go_org_imports()
-
+command Rvim so ~/.config/nvim/init.vim
 command YamlToJson %!yq -o j
 command JsonFormat %!jq 
