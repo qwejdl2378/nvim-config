@@ -1,5 +1,6 @@
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local util = require "lspconfig/util"
 
@@ -44,42 +45,6 @@ local lsp_flags = {
   debounce_text_changes = 120,
 }
 
-require('lspconfig')['eslint'].setup {
-  settings = {
-    codeAction = {
-      disableRuleComment = {
-        enable = true,
-        location = "separateLine"
-      },
-      showDocumentation = {
-        enable = true
-      }
-    },
-    codeActionOnSave = {
-      enable = false,
-      mode = "all"
-    },
-    experimental = {
-      useFlatConfig = false
-    },
-    format = true,
-    nodePath = "",
-    onIgnoredFiles = "off",
-    packageManager = "yarn",
-    problems = {
-      shortenToSingleLine = false
-    },
-    quiet = false,
-    rulesCustomizations = {},
-    run = "onType",
-    useESLintClass = false,
-    validate = "on",
-    workingDirectory = {
-      mode = "location"
-    }
-  }
-}
-
 require('lspconfig')['tsserver'].setup {
   on_attach = on_attach,
   flags = lsp_flags,
@@ -107,7 +72,6 @@ require('lspconfig')['gopls'].setup {
 require('lspconfig')['sumneko_lua'].setup {
   on_attach = on_attach,
   flags = lsp_flags,
-
   settings = {
     Lua = {
       format = {
@@ -126,6 +90,9 @@ require('lspconfig')['sumneko_lua'].setup {
       diagnostics = {
         -- Get the language server to recognize the `vim` global
         globals = { 'vim' },
+        severity = {
+          { 'need-check-nil', 'Hint' },
+        }
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
