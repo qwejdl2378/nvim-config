@@ -28,7 +28,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
-
+Plug 'numToStr/Comment.nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'jremmen/vim-ripgrep'
@@ -44,7 +44,7 @@ lua require('complete')
 lua require('lsp')
 lua require('ntree')
 lua require("treesitter")
-
+lua require('comm')
 colorscheme gruvbox
 
 set nocompatible
@@ -52,7 +52,7 @@ set termguicolors " 24位真彩色支持
 set ignorecase
 set smartcase
 set cursorline
-set paste
+"set paste
 set encoding=UTF-8
 set backspace=2
 set number
@@ -73,7 +73,8 @@ syntax on
 " 使用 foldexpr 指定的方式折叠代码
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
-set foldlevel=99
+set nofoldenable
+" set foldlevel=99
 
 let mapleader=","
 let g:mkdp_auto_start = 0
