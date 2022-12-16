@@ -42,6 +42,8 @@ Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 call plug#end()
 
+let mapleader=","
+
 lua require('mason-conf')
 lua require('complete')
 lua require('lsp')
@@ -80,7 +82,6 @@ set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable
 " set foldlevel=99
 
-let mapleader=","
 let g:mkdp_auto_start = 0
 
 
@@ -108,6 +109,8 @@ nmap <C-H> <C-W>h
 nmap <C-z> :NvimTreeToggle<CR>
 nmap mm <Plug>(git-messenger)
 nmap <C-x> :BufferClose<CR>
+nmap <leader>r :so $MYVIMRC<CR>
+
 " Expand
 imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
 smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
@@ -141,9 +144,16 @@ lua <<EOF
       end
     end
   end
+
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  function custom_go_format() 
+    vim.lsp.buf.format { async = true }
+  end
 EOF
 
-autocmd BufWritePre *.go lua go_org_imports()
-command Rvim so ~/.config/nvim/init.vim
 command YamlToJson %!yq -o j
 command JsonFormat %!jq 
+
+autocmd BufWritePre *.go lua go_org_imports()
+autocmd BufWritePre *.go lua custom_go_format()
+
