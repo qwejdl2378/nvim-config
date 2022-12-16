@@ -30,6 +30,9 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'numToStr/Comment.nvim'
 
+" tab管理
+Plug 'romgrk/barbar.nvim'
+
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'jremmen/vim-ripgrep'
 Plug 'tpope/vim-fugitive'
@@ -45,6 +48,7 @@ lua require('lsp')
 lua require('ntree')
 lua require("treesitter")
 lua require('comm')
+lua require('bar')
 colorscheme gruvbox
 
 set nocompatible
@@ -103,7 +107,7 @@ nmap <C-L> <C-W>l
 nmap <C-H> <C-W>h
 nmap <C-z> :NvimTreeToggle<CR>
 nmap mm <Plug>(git-messenger)
-
+nmap <C-x> :BufferClose<CR>
 " Expand
 imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
 smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
@@ -117,6 +121,11 @@ imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab
 smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
 imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+
+
+
+
+
 
 lua <<EOF
   function go_org_imports(wait_ms)

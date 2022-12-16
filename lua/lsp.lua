@@ -91,7 +91,7 @@ require('lspconfig')['sumneko_lua'].setup {
         -- Get the language server to recognize the `vim` global
         globals = { 'vim' },
         severity = {
-          { 'need-check-nil', 'Hint' },
+          { 'need-check-nil', 'Information' },
         }
       },
       workspace = {

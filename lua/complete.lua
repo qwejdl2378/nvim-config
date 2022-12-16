@@ -19,9 +19,9 @@ cmp.setup({
   },
   window = {
     completion = {
-     -- scrolloff = 3,
-     -- col_offset = 0,
-     -- side_padding = 2,
+      -- scrolloff = 3,
+      -- col_offset = 0,
+      -- side_padding = 2,
     },
   },
   mapping = cmp.mapping.preset.insert({
