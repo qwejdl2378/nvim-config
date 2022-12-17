@@ -13,7 +13,7 @@ keymap("n", "<C-z>", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<C-x>", ":BufferClose<CR>", opts)
 keymap("n", "<leader>r", ":so $MYVIMRC<CR>", { noremap = true })
 keymap("n", "<leader><CR>", ":luafile $MYVIMRC<CR>", { noremap = true })
-
+keymap('n', '<leader>f', ':Files<CR>', opts)
 -- tabs快捷键
 -- Move to previous/next
 keymap('n', 'tt', '<Cmd>BufferPrevious<CR>', opts)
