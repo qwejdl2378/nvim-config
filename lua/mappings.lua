@@ -1,7 +1,5 @@
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
-
 local keymap = vim.api.nvim_set_keymap
 
 vim.g.mapleader = ","
@@ -13,12 +11,13 @@ keymap("n", "<C-H>", "<C-W>h", opts)
 
 keymap("n", "<C-z>", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<C-x>", ":BufferClose<CR>", opts)
-keymap("n", "<leader>r", ":so $MYVIMRC<CR>", opts)
+keymap("n", "<leader>r", ":so $MYVIMRC<CR>", { noremap = true })
+keymap("n", "<leader><CR>", ":luafile $MYVIMRC<CR>", { noremap = true })
 
 -- tabs快捷键
 -- Move to previous/next
 keymap('n', 'tt', '<Cmd>BufferPrevious<CR>', opts)
-keymap('n', 'nn', '<Cmd>BufferNext<CR>', opts)
+keymap('n', '<leader>n', '<Cmd>BufferNext<CR>', opts)
 -- Re-order to previous/next
 keymap('n', '<leader><', '<Cmd>BufferMovePrevious<CR>', opts)
 keymap('n', '<leader>>', '<Cmd>BufferMoveNext<CR>', opts)
@@ -52,5 +51,3 @@ keymap('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
 keymap('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
 keymap('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
 keymap('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
-
-

@@ -13,7 +13,7 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-vsnip'
-  -- use 'hrsh7th/vim-vsnip'
+  use 'hrsh7th/vim-vsnip'
 
   -- 文件树
   use 'nvim-tree/nvim-web-devicons'
@@ -41,5 +41,19 @@ return require('packer').startup(function(use)
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
 
-
+  use {
+    'andymass/vim-matchup',
+    setup = function()
+      -- may set any options here
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end
+  }
+  use 'tpope/vim-surround'
+  use 'terryma/vim-multiple-cursors'
+  -- nginx 语法高亮
+  use 'chr4/nginx.vim'
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
 end)
