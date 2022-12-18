@@ -1,3 +1,5 @@
+# config structure
+```
 .
 ├── lua
 │   ├── lsp
@@ -26,4 +28,4 @@
 │   └── packer_compiled.lua
 ├── README.md
 └── init.lua
-
+```
