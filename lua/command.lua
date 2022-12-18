@@ -20,7 +20,7 @@ vim.cmd([[
  augroup _go_format
    autocmd!
    autocmd BufWritePre *.go lua Go_org_imports()
-   autocmd BufWritePre *.go,*.lua lua Custom_go_format()
+   autocmd BufWritePre *.go lua Custom_go_format()
  augroup END
 ]])
 
