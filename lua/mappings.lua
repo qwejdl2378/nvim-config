@@ -13,10 +13,11 @@ keymap("n", "<C-z>", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<C-x>", ":BufferClose<CR>", opts)
 keymap("n", "<leader>r", ":so $MYVIMRC<CR>", { noremap = true })
 keymap("n", "<leader><CR>", ":luafile $MYVIMRC<CR>", { noremap = true })
+keymap("n", "<leader><Space>", ":luafile %<CR>", { noremap = true })
 keymap('n', '<leader>f', ':Files<CR>', opts)
 -- tabs快捷键
 -- Move to previous/next
-keymap('n', 'tt', '<Cmd>BufferPrevious<CR>', opts)
+keymap('n', '<leader>p', '<Cmd>BufferPrevious<CR>', opts)
 keymap('n', '<leader>n', '<Cmd>BufferNext<CR>', opts)
 -- Re-order to previous/next
 keymap('n', '<leader><', '<Cmd>BufferMovePrevious<CR>', opts)
@@ -33,7 +34,7 @@ keymap('n', '<leader>8', '<Cmd>BufferGoto 8<CR>', opts)
 keymap('n', '<leader>9', '<Cmd>BufferGoto 9<CR>', opts)
 keymap('n', '<leader>0', '<Cmd>BufferLast<CR>', opts)
 -- Pin/unpin buffer
-keymap('n', '<leader>p', '<Cmd>BufferPin<CR>', opts)
+keymap('n', '<C-p>', '<Cmd>BufferPin<CR>', opts)
 -- Close buffer
 keymap('n', '<leader>c', '<Cmd>BufferClose<CR>', opts)
 -- Wipeout buffer

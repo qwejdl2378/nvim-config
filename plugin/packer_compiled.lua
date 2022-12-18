@@ -139,6 +139,11 @@ _G.packer_plugins = {
     path = "/Users/dongleiji/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/morhetz/gruvbox"
   },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/Users/dongleiji/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
     path = "/Users/dongleiji/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
@@ -148,6 +153,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/dongleiji/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["nginx.vim"] = {
+    loaded = true,
+    path = "/Users/dongleiji/.local/share/nvim/site/pack/packer/start/nginx.vim",
+    url = "https://github.com/chr4/nginx.vim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -191,6 +201,11 @@ _G.packer_plugins = {
     path = "/Users/dongleiji/.local/share/nvim/site/pack/packer/opt/vim-matchup",
     url = "https://github.com/andymass/vim-matchup"
   },
+  ["vim-multiple-cursors"] = {
+    loaded = true,
+    path = "/Users/dongleiji/.local/share/nvim/site/pack/packer/start/vim-multiple-cursors",
+    url = "https://github.com/terryma/vim-multiple-cursors"
+  },
   ["vim-ripgrep"] = {
     loaded = true,
     path = "/Users/dongleiji/.local/share/nvim/site/pack/packer/start/vim-ripgrep",
@@ -200,6 +215,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/dongleiji/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
+  },
+  ["vim-vsnip"] = {
+    loaded = true,
+    path = "/Users/dongleiji/.local/share/nvim/site/pack/packer/start/vim-vsnip",
+    url = "https://github.com/hrsh7th/vim-vsnip"
   }
 }
 
