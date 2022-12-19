@@ -33,7 +33,7 @@ end
 
 local woption = {
   -- 打开文件时不折叠
-  foldenable = true,
+  foldenable = false,
   wrap = false,
 }
 
