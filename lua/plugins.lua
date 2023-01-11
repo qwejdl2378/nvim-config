@@ -56,4 +56,9 @@ return require('packer').startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
+  -- vim 内使用终端
+  use { "akinsho/toggleterm.nvim", tag = '*' }
+
+  -- tldr
+  use { "wlemuel/vim-tldr" }
 end)

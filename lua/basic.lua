@@ -13,6 +13,7 @@ local options = {
   showmatch     = true,
   softtabstop   = 2,
   shiftwidth    = 2,
+  tabstop       = 2,
   expandtab     = true,
   splitright    = true,
   splitbelow    = true,
